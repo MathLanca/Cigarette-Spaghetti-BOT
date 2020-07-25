@@ -51,7 +51,8 @@ def __search_for_tweets(api,query,max_tweets):
     try:
         print("trying to search tweets")
         return api.search(q=query, count=max_tweets,result_type="recent",locale="pt-br")
-    except TweepError as err:
+    except:
+        err = sys.exc_info()[0]
         print(err)
         print("Could not search for new tweets")
 
@@ -59,7 +60,8 @@ def __fav_tweet(api,tweetId):
     try:
         print("trying to fav tweet")
         api.create_favorite(tweetId)
-    except TweepError as err:
+    except:
+        err = sys.exc_info()[0]
         print(err)
         print("Could not fav this tweet")
 
@@ -68,7 +70,8 @@ def __reply_tweet(api,reply_message, id):
     try:
         print("trying to reply tweet")
         return api.update_status(reply_message, in_reply_to_status_id=id, auto_populate_reply_metadata=True)
-    except TweepError as err:
+    except:
+        err = sys.exc_info()[0]
         print(err)
         print("Could not reply this tweet")
 
@@ -76,7 +79,8 @@ def __retweet(api,id):
     try:
         print("trying to rt tweet")
         api.retweet(id)
-    except TweepError as err:
+    except:
+        err = sys.exc_info()[0]
         print(err)
         print("Could not retweet this tweet")
 
