@@ -8,7 +8,9 @@ from tweepy.auth import OAuthHandler
 
 def Main():
     print("Cigarette Spaghetti BOT started")
-
+    
+    bot_profile = 1285720255994777600
+    
     CONSUMER_KEY = environ['CONSUMER_KEY']
     CONSUMER_SECRET = environ['CONSUMER_SECRET']
     ACCESS_KEY = environ['ACCESS_KEY']
@@ -21,12 +23,15 @@ def Main():
     api = tweepy.API(auth, wait_on_rate_limit=True)
 
     query = 'cigarro OR audiovisual'
-    max_tweets = 100
+    max_tweets = 10
 
     results = __search_for_tweets(api,query,max_tweets)
 
     if results != None and len(results) > 0:
         for result in results:
+            if result.user.id == bot_profile:
+                break
+                
             print("ID::::: ", result.id)
             print("TEXT::::: " + result.text)
             print("USER::::: ", result.user.name)
@@ -43,7 +48,7 @@ def Main():
                 secondReply = __reply_tweet(api,secondMessage,firstReply.id)
 
             print("Flow completed successfully")
-            time.sleep(5)
+            time.sleep(10)
 
     else:
         print("There is no tweets to reply")
