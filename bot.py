@@ -1,15 +1,17 @@
 import tweepy
 import time
+import os
+from os import environ
 
 from tweepy.auth import OAuthHandler
 
 def Main():
     print("Cigarette Spaghetti BOT started")
 
-    CONSUMER_KEY = 'uXGelTxTJV5WcmabvQS5v7ByW'
-    CONSUMER_SECRET = 'Ix0iK19T7azIMclvkjCWkCeV7XbhjRPJCOC9V3VNuSSuqeuZkf'
-    ACCESS_KEY = '1285720255994777600-3cVYZT2Guecj34HKqn7eIHfXhVjXWH'
-    ACCESS_SECRET = 'ySaJFFRmFn5vpmjlbXAt967VlvcO4g6XgenosteyR5KUw'
+    CONSUMER_KEY = environ['CONSUMER_KEY']
+    CONSUMER_SECRET = environ['CONSUMER_SECRET']
+    ACCESS_KEY = environ['ACCESS_KEY']
+    ACCESS_SECRET = environ['ACCESS_SECRET']
 
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 
